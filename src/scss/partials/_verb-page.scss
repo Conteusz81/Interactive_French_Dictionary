@@ -1,0 +1,179 @@
+$tablet: "(min-width: 768px)";
+$desktop: "(min-width: 1024px)";
+
+.background {
+
+
+  .verbs_container {
+    max-width: 80%;
+    margin: 0 auto;
+    font-family: 'Oswald', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .verb_svg {
+      height: 100px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      @for $i from 1 through 30 {
+        span:nth-of-type(#{$i}) {
+          height: 120px;
+
+          svg {
+            align-self: center;
+            width: 40px;
+            height: 60px;
+            stroke-dasharray: 800;
+            stroke-dashoffset: 800;
+            fill: none;
+            stroke: black;
+            animation: print 2s #{$i * 300}ms linear forwards;
+
+            path {
+              width: 60px;
+            }
+          }
+
+          svg[rel='i'] {
+            margin-left: -10px;
+
+            path {
+              width: 45px;
+            }
+          }
+          //svg[rel='fr'] {
+          //  height: 120px;
+          //
+          //  path {
+          //
+          //  }
+          //}
+
+          @keyframes print {
+            0% {
+              stroke-dashoffset: 800;
+              fill: black;
+              fill-opacity: 0;
+            }
+            60% {
+              fill: black;
+              fill-opacity: .1;
+            }
+            100% {
+              stroke-dashoffset: 0;
+              fill: black;
+              fill-opacity: 1;
+            }
+          }
+        }
+      }
+
+      @media #{$desktop} {
+        justify-content: space-around;
+      }
+    }
+
+    .verb_box {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      font-size: 35px;
+      //font-weight: bold;
+
+      .verb_variants {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 1px solid grey;
+        border-radius: 5px;
+        margin: 5px 0;
+        padding: 10px;
+        transition: .7s;
+          p {
+            padding: 5px;
+            width: 70%;
+            span {
+              font-size: 1.5em;
+            }
+          }
+
+
+      }
+      @media #{$tablet} {
+        font-size: 40px;
+      }
+      @media #{$desktop} {
+        font-size: 25px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        .verb_variants {
+          width: 30%;
+        }
+      }
+    }
+
+    .verb_sound {
+      cursor: pointer;
+      width: 50px;
+      height: 50px;
+      color: blue;
+      opacity: .6;
+      transition: .7s;
+
+      &:hover {
+        transform: scale(1.1);
+        opacity: 1;
+      }
+
+    }
+
+
+
+    .verb_example {
+      width: 100%;
+      font-size: 35px;
+      border: 1px solid grey;
+      border-radius: 5px;
+      margin: 5px 0;
+      padding: 10px;
+      transition: .7s;
+      .verb_example_p {
+        display: flex;
+        flex-direction: column;
+      }
+      @media #{$tablet} {
+        font-size: 40px;
+      }
+      @media #{$desktop} {
+        font-size: 25px;
+      }
+    }
+
+    .back_to_main {
+      width: 60px;
+      height: 60px;
+      color: black;
+      opacity: .5;
+      transition: .7s;
+      margin: 20px;
+
+      &:hover {
+        transform: scale(1.1);
+        opacity: 1;
+      }
+
+    }
+
+    audio.player {
+      display: none;
+    }
+  }
+}
+
+
+

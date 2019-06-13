@@ -1,0 +1,111 @@
+$tablet: "(min-width: 768px)";
+$desktop: "(min-width: 1024px)";
+
+.form_container {
+  margin: 0 auto;
+  max-width: 80%;
+  font-family: 'Oswald', sans-serif;
+  font-size: 30px;
+  transition: .7s;
+
+  .back_to_main {
+    width: 60px;
+    height: 60px;
+    color: black;
+    opacity: .5;
+    transition: .7s;
+    margin: 20px;
+
+    &:hover {
+      transform: scale(1.1);
+      opacity: 1;
+    }
+
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .verb_box {
+      width: 100%;
+
+      .input-group {
+        transition: .7s;
+        margin: 10px 0;
+
+        .input-group-prepend {
+          width: 85px;
+          .input-group-text {
+            width: 100%;
+            font-size: 60%;
+
+          }
+        }
+      }
+      @media #{$desktop} {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        .input-group {
+          width: 47%;
+        }
+      }
+    }
+
+    .url_box {
+      width: 100%;
+      transition: .7s;
+      .input-group {
+
+        margin: 10px 0;
+
+        .input-group-prepend {
+          width: 85px;
+
+          .input-group-text {
+            width: 100%;
+            font-size: 50%;
+          }
+        }
+      }
+    }
+
+    .textarea_box {
+      width: 100%;
+      .input-group {
+        margin: 10px 0;
+      }
+    }
+
+    button {
+      margin: 5px;
+    }
+
+  }
+
+  .btn_edit {
+    text-align: center;
+  }
+
+  .verbs_list {
+    width: 100%;
+    padding: 0;
+    li {
+      display: flex;
+      justify-content: space-between;
+      border: 1px solid grey;
+      border-radius: 5px;
+      margin: 10px 0;
+      padding: 10px;
+      button {
+        margin: 5px;
+      }
+    }
+  }
+
+
+}
