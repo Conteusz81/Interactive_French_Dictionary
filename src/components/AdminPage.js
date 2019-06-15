@@ -142,41 +142,61 @@ class AdminPage extends Component {
 
 
         } else {
-            fetch('http://localhost:3000/verbs', {
-                method: 'post',
-                body: JSON.stringify({
-                    verb_pl: verb_pl.toLowerCase(),
-                    verb_fr: verb_fr.toLowerCase(),
-                    i_fr: i_fr.toLowerCase(),
-                    you_fr: you_fr.toLowerCase(),
-                    he_she_it_fr: he_she_it_fr.toLowerCase(),
-                    we_fr: we_fr.toLowerCase(),
-                    you_plural_fr: you_plural_fr.toLowerCase(),
-                    they_fr: they_fr.toLowerCase(),
-                    past_fr: past_fr.toLowerCase(),
-                    verb_Url: verb_Url,
-                    i_Url: i_Url,
-                    you_Url: you_Url,
-                    he_she_it_Url: he_she_it_Url,
-                    we_Url: we_Url,
-                    you_plural_Url: you_plural_Url,
-                    they_Url: they_Url,
-                    past_Url: past_Url,
-                    example_pl_1: example_pl_1,
-                    example_fr_1: example_fr_1
-                }),
+            Swal.fire({
+                title: 'Czy na pewno chcesz dodać nowy czasownik?',
+                text: "",
+                type: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#33d662',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Tak, dodaj!'
+            }).then((result) => {
+                if (result.value) {
+                    Swal.fire(
+                        'Dodano!',
+                        'Nowy czasownik został dodany.',
+                        'success'
+                    );
 
-                headers: {
-                    "Content-Type": "application/json"
+                    fetch('http://localhost:3000/verbs', {
+                        method: 'post',
+                        body: JSON.stringify({
+                            verb_pl: verb_pl.toLowerCase(),
+                            verb_fr: verb_fr.toLowerCase(),
+                            i_fr: i_fr.toLowerCase(),
+                            you_fr: you_fr.toLowerCase(),
+                            he_she_it_fr: he_she_it_fr.toLowerCase(),
+                            we_fr: we_fr.toLowerCase(),
+                            you_plural_fr: you_plural_fr.toLowerCase(),
+                            they_fr: they_fr.toLowerCase(),
+                            past_fr: past_fr.toLowerCase(),
+                            verb_Url: verb_Url,
+                            i_Url: i_Url,
+                            you_Url: you_Url,
+                            he_she_it_Url: he_she_it_Url,
+                            we_Url: we_Url,
+                            you_plural_Url: you_plural_Url,
+                            they_Url: they_Url,
+                            past_Url: past_Url,
+                            example_pl_1: example_pl_1,
+                            example_fr_1: example_fr_1
+                        }),
+
+                        headers: {
+                            "Content-Type": "application/json"
+                        }
+                    }).then(resp => resp.json())
+                        .then(resp => {
+                            console.log(resp);
+                            this.formClear();
+                            this.pageUpdate();
+
+                        })
                 }
-            }).then(resp => resp.json())
-                .then(resp => {
-                    console.log(resp);
-                    this.formClear();
-                    this.pageUpdate();
 
-                })
+            })
         }
+
     };
 
     handleEdit = e => {
@@ -292,31 +312,47 @@ class AdminPage extends Component {
                     <form onSubmit={this.handleSubmit}>
 
                         <div className='verb_box'>
-                            <AdminFormVerb name='verb_pl' prefix='PL' value={verb_pl} onChangeMethod={this.handleChange}/>
-                            <AdminFormVerb name='verb_fr' prefix='FR' value={verb_fr} onChangeMethod={this.handleChange}/>
+                            <AdminFormVerb name='verb_pl' prefix='PL' value={verb_pl}
+                                           onChangeMethod={this.handleChange}/>
+                            <AdminFormVerb name='verb_fr' prefix='FR' value={verb_fr}
+                                           onChangeMethod={this.handleChange}/>
                             <AdminFormVerb name='i_fr' prefix='je' value={i_fr} onChangeMethod={this.handleChange}/>
                             <AdminFormVerb name='you_fr' prefix='tu' value={you_fr} onChangeMethod={this.handleChange}/>
-                            <AdminFormVerb name='he_she_it_fr' prefix='il/elle' value={he_she_it_fr} onChangeMethod={this.handleChange}/>
+                            <AdminFormVerb name='he_she_it_fr' prefix='il/elle' value={he_she_it_fr}
+                                           onChangeMethod={this.handleChange}/>
                             <AdminFormVerb name='we_fr' prefix='nous' value={we_fr} onChangeMethod={this.handleChange}/>
-                            <AdminFormVerb name='you_plural_fr' prefix='vous' value={you_plural_fr} onChangeMethod={this.handleChange}/>
-                            <AdminFormVerb name='they_fr' prefix='ils/elles' value={they_fr} onChangeMethod={this.handleChange}/>
-                            <AdminFormVerb name='past_fr' prefix='p. passé' value={past_fr} onChangeMethod={this.handleChange}/>
+                            <AdminFormVerb name='you_plural_fr' prefix='vous' value={you_plural_fr}
+                                           onChangeMethod={this.handleChange}/>
+                            <AdminFormVerb name='they_fr' prefix='ils/elles' value={they_fr}
+                                           onChangeMethod={this.handleChange}/>
+                            <AdminFormVerb name='past_fr' prefix='p. passé' value={past_fr}
+                                           onChangeMethod={this.handleChange}/>
                         </div>
 
                         <div className='url_box'>
-                            <AdminFormUrl name='verb_Url' prefix='Url FR' value={verb_Url} onChangeMethod={this.handleChange}/>
-                            <AdminFormUrl name='i_Url' prefix='Url je' value={i_Url} onChangeMethod={this.handleChange}/>
-                            <AdminFormUrl name='you_Url' prefix='Url tu' value={you_Url} onChangeMethod={this.handleChange}/>
-                            <AdminFormUrl name='he_she_it_Url' prefix='Url il' value={he_she_it_Url} onChangeMethod={this.handleChange}/>
-                            <AdminFormUrl name='we_Url' prefix='Url nous' value={we_Url} onChangeMethod={this.handleChange}/>
-                            <AdminFormUrl name='you_plural_Url' prefix='Url vous' value={you_plural_Url} onChangeMethod={this.handleChange}/>
-                            <AdminFormUrl name='they_Url' prefix='Url ils' value={they_Url} onChangeMethod={this.handleChange}/>
-                            <AdminFormUrl name='past_Url' prefix='Url p.p.' value={past_Url} onChangeMethod={this.handleChange}/>
+                            <AdminFormUrl name='verb_Url' prefix='Url FR' value={verb_Url}
+                                          onChangeMethod={this.handleChange}/>
+                            <AdminFormUrl name='i_Url' prefix='Url je' value={i_Url}
+                                          onChangeMethod={this.handleChange}/>
+                            <AdminFormUrl name='you_Url' prefix='Url tu' value={you_Url}
+                                          onChangeMethod={this.handleChange}/>
+                            <AdminFormUrl name='he_she_it_Url' prefix='Url il' value={he_she_it_Url}
+                                          onChangeMethod={this.handleChange}/>
+                            <AdminFormUrl name='we_Url' prefix='Url nous' value={we_Url}
+                                          onChangeMethod={this.handleChange}/>
+                            <AdminFormUrl name='you_plural_Url' prefix='Url vous' value={you_plural_Url}
+                                          onChangeMethod={this.handleChange}/>
+                            <AdminFormUrl name='they_Url' prefix='Url ils' value={they_Url}
+                                          onChangeMethod={this.handleChange}/>
+                            <AdminFormUrl name='past_Url' prefix='Url p.p.' value={past_Url}
+                                          onChangeMethod={this.handleChange}/>
                         </div>
 
                         <div className='textarea_box'>
-                            <AdminFormExample name='example_pl_1' prefix='Przykład pl' value={example_pl_1} onChangeMethod={this.handleChange}/>
-                            <AdminFormExample name='example_fr_1' prefix='Przykład fr' value={example_fr_1} onChangeMethod={this.handleChange}/>
+                            <AdminFormExample name='example_pl_1' prefix='Przykład pl' value={example_pl_1}
+                                              onChangeMethod={this.handleChange}/>
+                            <AdminFormExample name='example_fr_1' prefix='Przykład fr' value={example_fr_1}
+                                              onChangeMethod={this.handleChange}/>
                         </div>
 
                         <button type='submit' className='btn btn-outline-success'>Zapisz</button>
@@ -334,10 +370,12 @@ class AdminPage extends Component {
                                     <div key={el.id}>
                                         {idCheck ? null :
                                             <>
-                                            <button id={el.id} onClick={this.handleEdit} type='button'
-                                                    className='btn btn-outline-primary'>Zmień</button>
-                                            <button id={el.id} onClick={this.handleDelete} type='button'
-                                            className='btn btn-outline-danger'>Usuń</button>
+                                                <button id={el.id} onClick={this.handleEdit} type='button'
+                                                        className='btn btn-outline-primary'>Zmień
+                                                </button>
+                                                <button id={el.id} onClick={this.handleDelete} type='button'
+                                                        className='btn btn-outline-danger'>Usuń
+                                                </button>
                                             </>
                                         }
 
