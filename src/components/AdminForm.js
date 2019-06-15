@@ -11,7 +11,11 @@ class AdminFormVerb extends Component{
                     <span className="input-group-text" id="inputGroup-sizing-lg">{prefix}</span>
                 </div>
                 <input required type="text" className="form-control" aria-label="Sizing example input"
-                       aria-describedby="inputGroup-sizing-lg" name={name} value={value} onChange={onChangeMethod}/>
+                       aria-describedby="inputGroup-sizing-lg" name={name}
+                       value={value.match("[^a-zA-Ząęłćśńóśżźêâîôûëïüàèùéç]*$") ?
+                           value.replace(/[^a-zA-Ząęłćśńóśżźêâîôûëïüàèùéç]*$/g, "") :
+                           value}
+                       onChange={onChangeMethod}/>
             </div>
         )
     }
