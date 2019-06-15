@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+import {AdminFormVerb, AdminFormUrl, AdminFormExample} from "./AdminForm";
 import {BackToMainPage} from "./LinksIcons";
 
 const MySwal = withReactContent(Swal);
@@ -323,151 +324,39 @@ class AdminPage extends Component {
                     <BackToMainPage/>
                     {idCheck ? <h1>Zmień</h1> : <h1>Dodaj nowy</h1>}
                     <form onSubmit={this.handleSubmit}>
+
                         <div className='verb_box'>
-                        <div className="input-group input-group-lg">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="inputGroup-sizing-lg">PL</span>
-                            </div>
-                            <input required type="text" className="form-control" aria-label="Sizing example input"
-                                   aria-describedby="inputGroup-sizing-lg" name='verb_pl' value={verb_pl} onChange={this.handleChange}/>
+                            <AdminFormVerb name='verb_pl' prefix='PL' value={verb_pl} onChangeMethod={this.handleChange}/>
+                            <AdminFormVerb name='verb_fr' prefix='FR' value={verb_fr} onChangeMethod={this.handleChange}/>
+                            <AdminFormVerb name='i_fr' prefix='je' value={i_fr} onChangeMethod={this.handleChange}/>
+                            <AdminFormVerb name='you_fr' prefix='tu' value={you_fr} onChangeMethod={this.handleChange}/>
+                            <AdminFormVerb name='he_she_it_fr' prefix='il/elle' value={he_she_it_fr} onChangeMethod={this.handleChange}/>
+                            <AdminFormVerb name='we_fr' prefix='nous' value={we_fr} onChangeMethod={this.handleChange}/>
+                            <AdminFormVerb name='you_plural_fr' prefix='vous' value={you_plural_fr} onChangeMethod={this.handleChange}/>
+                            <AdminFormVerb name='they_fr' prefix='ils/elles' value={they_fr} onChangeMethod={this.handleChange}/>
+                            <AdminFormVerb name='past_fr' prefix='p. passé' value={past_fr} onChangeMethod={this.handleChange}/>
                         </div>
-                        <div className="input-group input-group-lg">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="inputGroup-sizing-lg">FR</span>
-                            </div>
-                            <input required type="text" className="form-control" aria-label="Sizing example input"
-                                   aria-describedby="inputGroup-sizing-lg" name='verb_fr' value={verb_fr} onChange={this.handleChange}/>
-                        </div>
-                        <div className="input-group input-group-lg">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="inputGroup-sizing-lg">je</span>
-                            </div>
-                            <input required type="text" className="form-control" aria-label="Sizing example input"
-                                   aria-describedby="inputGroup-sizing-lg" name='i_fr' value={i_fr} onChange={this.handleChange}/>
-                        </div>
-                        <div className="input-group input-group-lg">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="inputGroup-sizing-lg">tu</span>
-                            </div>
-                            <input required type="text" className="form-control" aria-label="Sizing example input"
-                                   aria-describedby="inputGroup-sizing-lg" name='you_fr' value={you_fr} onChange={this.handleChange}/>
-                        </div>
-                        <div className="input-group input-group-lg">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="inputGroup-sizing-lg">il/elle</span>
-                            </div>
-                            <input required type="text" className="form-control" aria-label="Sizing example input"
-                                   aria-describedby="inputGroup-sizing-lg" name='he_she_it_fr' value={he_she_it_fr} onChange={this.handleChange}/>
-                        </div>
-                        <div className="input-group input-group-lg">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="inputGroup-sizing-lg">nous</span>
-                            </div>
-                            <input required type="text" className="form-control" aria-label="Sizing example input"
-                                   aria-describedby="inputGroup-sizing-lg" name='we_fr' value={we_fr} onChange={this.handleChange}/>
-                        </div>
-                        <div className="input-group input-group-lg">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="inputGroup-sizing-lg">vous</span>
-                            </div>
-                            <input required type="text" className="form-control" aria-label="Sizing example input"
-                                   aria-describedby="inputGroup-sizing-lg" name='you_plural_fr' value={you_plural_fr} onChange={this.handleChange}/>
-                        </div>
-                        <div className="input-group input-group-lg">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="inputGroup-sizing-lg">ils/elles</span>
-                            </div>
-                            <input required type="text" className="form-control" aria-label="Sizing example input"
-                                   aria-describedby="inputGroup-sizing-lg" name='they_fr' value={they_fr} onChange={this.handleChange}/>
-                        </div>
-                        <div className="input-group input-group-lg">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="inputGroup-sizing-lg">p. passé</span>
-                            </div>
-                            <input required type="text" className="form-control" aria-label="Sizing example input"
-                                   aria-describedby="inputGroup-sizing-lg" name='past_fr' value={past_fr} onChange={this.handleChange}/>
-                        </div>
-                        </div>
-
-
 
                         <div className='url_box'>
-                        <div className="input-group input-group-lg">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="inputGroup-sizing-lg">Url FR</span>
-                            </div>
-                            <input type="text" className="form-control" aria-label="Sizing example input"
-                                   aria-describedby="inputGroup-sizing-lg" name='verb_Url' value={verb_Url} onChange={this.handleChange}/>
-                        </div>
-                        <div className="input-group input-group-lg">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="inputGroup-sizing-lg">Url je</span>
-                            </div>
-                            <input type="text" className="form-control" aria-label="Sizing example input"
-                                   aria-describedby="inputGroup-sizing-lg" name='i_Url' value={i_Url} onChange={this.handleChange}/>
-                        </div>
-                        <div className="input-group input-group-lg">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="inputGroup-sizing-lg">Url tu</span>
-                            </div>
-                            <input type="text" className="form-control" aria-label="Sizing example input"
-                                   aria-describedby="inputGroup-sizing-lg" name='you_Url' value={you_Url} onChange={this.handleChange}/>
-                        </div>
-                        <div className="input-group input-group-lg">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="inputGroup-sizing-lg">Url il</span>
-                            </div>
-                            <input type="text" className="form-control" aria-label="Sizing example input"
-                                   aria-describedby="inputGroup-sizing-lg" name='he_she_it_Url' value={he_she_it_Url} onChange={this.handleChange}/>
-                        </div>
-                        <div className="input-group input-group-lg">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="inputGroup-sizing-lg">Url nous</span>
-                            </div>
-                            <input type="text" className="form-control" aria-label="Sizing example input"
-                                   aria-describedby="inputGroup-sizing-lg" name='we_Url' value={we_Url} onChange={this.handleChange}/>
-                        </div>
-                        <div className="input-group input-group-lg">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="inputGroup-sizing-lg">Url vous</span>
-                            </div>
-                            <input type="text" className="form-control" aria-label="Sizing example input"
-                                   aria-describedby="inputGroup-sizing-lg" name='you_plural_Url' value={you_plural_Url} onChange={this.handleChange}/>
-                        </div>
-                        <div className="input-group input-group-lg">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="inputGroup-sizing-lg">Url ils</span>
-                            </div>
-                            <input type="text" className="form-control" aria-label="Sizing example input"
-                                   aria-describedby="inputGroup-sizing-lg" name='they_Url' value={they_Url} onChange={this.handleChange}/>
-                        </div>
-                        <div className="input-group input-group-lg">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="inputGroup-sizing-lg">Url p.p.</span>
-                            </div>
-                            <input type="text" className="form-control" aria-label="Sizing example input"
-                                   aria-describedby="inputGroup-sizing-lg" name='past_Url' value={past_Url} onChange={this.handleChange}/>
-                        </div>
+                            <AdminFormUrl name='verb_Url' prefix='Url FR' value={verb_Url} onChangeMethod={this.handleChange}/>
+                            <AdminFormUrl name='i_Url' prefix='Url je' value={i_Url} onChangeMethod={this.handleChange}/>
+                            <AdminFormUrl name='you_Url' prefix='Url tu' value={you_Url} onChangeMethod={this.handleChange}/>
+                            <AdminFormUrl name='he_she_it_Url' prefix='Url il' value={he_she_it_Url} onChangeMethod={this.handleChange}/>
+                            <AdminFormUrl name='we_Url' prefix='Url nous' value={we_Url} onChangeMethod={this.handleChange}/>
+                            <AdminFormUrl name='you_plural_Url' prefix='Url vous' value={you_plural_Url} onChangeMethod={this.handleChange}/>
+                            <AdminFormUrl name='they_Url' prefix='Url ils' value={they_Url} onChangeMethod={this.handleChange}/>
+                            <AdminFormUrl name='past_Url' prefix='Url p.p.' value={past_Url} onChangeMethod={this.handleChange}/>
                         </div>
 
                         <div className='textarea_box'>
-                            <div className="input-group">
-                                <div className="input-group-prepend">
-                                    <span className="input-group-text">Przykład pl</span>
-                                </div>
-                                <textarea className="form-control" aria-label="With textarea" name='example_pl_1'
-                                          value={example_pl_1} onChange={this.handleChange}/>
-                            </div>
-                            <div className="input-group">
-                                <div className="input-group-prepend">
-                                    <span className="input-group-text">Przykład fr</span>
-                                </div>
-                                <textarea className="form-control" aria-label="With textarea" name='example_fr_1'
-                                          value={example_fr_1} onChange={this.handleChange}/>
-                            </div>
+                            <AdminFormExample name='example_pl_1' prefix='Przykład pl' value={example_pl_1} onChangeMethod={this.handleChange}/>
+                            <AdminFormExample name='example_fr_1' prefix='Przykład fr' value={example_fr_1} onChangeMethod={this.handleChange}/>
                         </div>
+
                         <button type='submit' className='btn btn-outline-success'>Zapisz</button>
+
                     </form>
+
                     <div className='btn_edit'>
                         {idCheck &&
                         <button onClick={this.handleEdit} className="btn btn-outline-danger">Anuluj</button>}
@@ -478,10 +367,14 @@ class AdminPage extends Component {
                                     {el.verb_fr}
                                     <div key={el.id}>
                                         {idCheck ? null :
+                                            <>
                                             <button id={el.id} onClick={this.handleEdit} type='button'
-                                                    className='btn btn-outline-primary'>Zmień</button>}
-                                        <button id={el.id} onClick={this.handleDelete} type='button'
-                                                className='btn btn-outline-danger'>Usuń</button>
+                                                    className='btn btn-outline-primary'>Zmień</button>
+                                            <button id={el.id} onClick={this.handleDelete} type='button'
+                                            className='btn btn-outline-danger'>Usuń</button>
+                                            </>
+                                        }
+
                                     </div>
                                 </li>
                             )
