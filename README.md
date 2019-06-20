@@ -15,7 +15,7 @@ The infinitive animation is automatically extracted from the database.
 
 ### **Or you can try it out:**
 
-* Make a fork or download the repository.
+* Clone or download the repository.
 
 * In directory:  
  1. `$ npm install` 
